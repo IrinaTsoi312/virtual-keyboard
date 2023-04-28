@@ -48,3 +48,10 @@ function Key(tag, style, key, value) {
     return this.tag;
   };
 }
+
+// Create Rows and add them into wrapper
+for(let i=0; i<5; i++) {
+  const el = new Row("div", "keyboard__row-", "keyboard__row", i+1);
+  const elem = el.createRow();
+  wrapper.append(elem);
+}
