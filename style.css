@@ -1,0 +1,121 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+li {
+  margin: 0;
+  list-style: none;
+}
+
+/* Common styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("./assets/images/formulas.jpg");
+  background-repeat: no-repeat;
+  backdrop-filter: brightness(30%);
+  font-family: "Montserrat Alternates", sans-serif;  
+}
+
+.wrapper {
+  display: block;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 850px;
+  background-color: rgba(255, 255, 255, 0.507);
+  border-radius: 20px;
+  z-index: 100;
+}
+
+/* Text output */
+.text-output {
+  margin-bottom: 1rem;
+  height: 200px;
+}
+
+#txtOutput {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  font-family: "Comfortaa";
+  color: rgb(31, 31, 31);
+  border-radius: 10px;
+}
+
+/* Keyboard */
+.keyboard {
+  padding: 0.3rem;
+  width: 100%;
+  background-color: rgba(48, 48, 48, 0.712);
+  color: #fff;
+  border-radius: 10px;
+}
+
+.keyboard__row {
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.key-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  background-color: #000000;
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+.key-btn:active {
+  border: 2px solid rgb(255, 255, 0);
+  color: rgb(255, 255, 0);
+}
+
+.key-btn__upper-symbol {
+  padding: 0.25rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.7rem;
+}
+
+.single-symbol {
+  width: 80px;
+  font-size: 1.5rem;
+}
+
+.key-btn__img {
+  max-width: 20px;
+  color: #fff;
+}
+
+/* buttons */
+#enter {
+  width: 110px;
+}
+
+#space {
+  width: 200px;
+}
+
+#capslock {
+  font-size: 0.7rem;
+}
