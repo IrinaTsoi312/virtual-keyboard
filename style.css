@@ -73,7 +73,6 @@ body {
 }
 
 .key-btn {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +108,7 @@ body {
 }
 
 #space {
-  width: 200px;
+  width: 330px;
 }
 
 #capslock {
