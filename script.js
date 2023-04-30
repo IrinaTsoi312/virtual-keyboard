@@ -111,3 +111,12 @@ for (let i = 0; i < controls.length; i += 1) {
     }
   }
 }
+// Type text
+const output = document.querySelector('#txtOutput');
+btns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (!btn.classList.contains('control-btn')) {
+      output.value += btn.textContent;
+    }
+  });
+});
