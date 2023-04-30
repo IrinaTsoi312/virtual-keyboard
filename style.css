@@ -102,6 +102,19 @@ body {
   font-size: 0.7rem;
 }
 
+.instruction {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.instruction__par {
+  padding: 0.3rem;
+  text-align: center;
+}
+
 /* buttons */
 #enter {
   width: 110px;

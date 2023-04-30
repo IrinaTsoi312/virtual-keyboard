@@ -98,6 +98,19 @@ function addContentToBtns() {
 }
 addContentToBtns();
 
+// Add Manual
+const instruction = document.createElement('div');
+instruction.className = 'instruction';
+const os = document.createElement('p');
+os.className = 'instruction__par';
+os.textContent = 'OS (operating system): Windows';
+instruction.append(os);
+const keysCombo = document.createElement('p');
+keysCombo.className = 'instruction__par';
+keysCombo.textContent = 'Change language: ctrl + shift';
+instruction.append(keysCombo);
+wrapper.append(instruction);
+
 // Add additional styles
 const controls = ['backspace', 'tab', 'capslock', 'enter', 'ctrl', 'win', 'alt', '', 'shift', 'del'];
 for (let i = 0; i < controls.length; i += 1) {
