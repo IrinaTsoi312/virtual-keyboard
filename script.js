@@ -95,3 +95,19 @@ function addContentToBtns() {
 }
 addContentToBtns();
 
+// Add additional styles
+const controls = ['backspace', 'TAB', 'capslock', 'Enter', 'ctrl', 'win', 'alt', '', 'shift'];
+for (let i = 0; i < controls.length; i += 1) {
+  for (let k = 0; k < btns.length; k += 1) {
+    if (btns[k].textContent === controls[i]) {
+      btns[k].classList.add('control-btn');
+      if (btns[k].textContent === '') {
+        btns[k].id = 'space';
+      } else if (btns[k].textContent === 'Enter') {
+        btns[k].id = 'enter';
+      } else {
+        btns[k].id = controls[i];
+      }
+    }
+  }
+}
