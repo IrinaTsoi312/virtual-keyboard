@@ -1,7 +1,7 @@
 const body = document.querySelector('body');
 const en = {
-  uc: ['~', '!', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'del', 'capslock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', "'", 'Enter', 'shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '⯅', 'shift', 'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
-  lc: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del', 'capslock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'Enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '⯅', 'shift', 'ctrl', 'win', 'alt', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
+  uc: ['~', '!', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'del', 'capslock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', "'", 'enter', 'shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '⯅', 'shift', 'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
+  lc: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del', 'capslock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '⯅', 'shift', 'ctrl', 'win', 'alt', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
 };
 const ru = {
   uc: ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'backspace', 'TAB', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'capslock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'enter', 'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '⯅', 'shift', 'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
@@ -104,7 +104,7 @@ function addContentToBtns() {
 addContentToBtns();
 
 // Add additional styles
-const controls = ['backspace', 'tab', 'capslock', 'Enter', 'ctrl', 'win', 'alt', '', 'shift', 'del'];
+const controls = ['backspace', 'tab', 'capslock', 'enter', 'ctrl', 'win', 'alt', '', 'shift', 'del'];
 for (let i = 0; i < controls.length; i += 1) {
   for (let k = 0; k < btns.length; k += 1) {
     if (btns[k].textContent === controls[i]) {
@@ -188,7 +188,12 @@ capslock.addEventListener('click', clock);
 function lightKeys(key) {
   btns.forEach((btn) => {
     if (btn.textContent === key) {
-      btn.classList.add('active-btn');
+      if (!btn.classList.contains('active-btn')) {
+        btn.classList.add('active-btn');
+      } else if (btn.classList.contains('active-btn')) {
+        btn.classList.remove('active-btn');
+        btn.classList.add('active-btn');
+      }
     }
   });
 }
@@ -205,8 +210,31 @@ document.addEventListener('keydown', (e) => {
   } else if (e.key === 'Tab') {
     lightKeys('tab');
     tab();
+  } else if (e.key === 'Shift') {
+    lightKeys('shift');
+  } else if (e.key === 'Control') {
+    lightKeys('ctrl');
+  } else if (e.key === 'Alt') {
+    lightKeys('alt');
+  } else if (e.key === 'ArrowUp') {
+    lightKeys('⯅');
+    txtOutput.value += '⯅';
+  } else if (e.key === 'ArrowLeft') {
+    lightKeys('⏴');
+    txtOutput.value += '⏴';
+  } else if (e.key === 'ArrowDown') {
+    lightKeys('⏷');
+    txtOutput.value += '⏷';
+  } else if (e.key === 'ArrowRight') {
+    lightKeys('⏵');
+    txtOutput.value += '⏵';
   } else {
     lightKeys(e.key);
     txtOutput.value += e.key;
   }
+});
+document.addEventListener('keyup', () => {
+  btns.forEach((btn) => {
+    btn.classList.remove('active-btn');
+  });
 });

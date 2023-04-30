@@ -125,7 +125,7 @@ body {
 
 .active-btn {
   animation-name: click;
-  animation-duration: 0.3s;
+  animation-duration: 0.1s;
 }
 
 @keyframes click {
