@@ -119,4 +119,24 @@ body {
 /* status */
 .active {
   background-color: rgb(255, 255, 0);
+  color: #000000;
+  border: 2px solid rgb(255, 255, 0);
+}
+
+.active-btn {
+  animation-name: click;
+  animation-duration: 0.3s;
+}
+
+@keyframes click {
+  0% {
+    background-color: #000000;
+    border: 2px solid #000000;
+  }
+
+  100% {
+    background-color: rgb(255, 255, 0);
+    color: #000000;
+    border: 2px solid rgb(255, 255, 0);
+  }
 }
