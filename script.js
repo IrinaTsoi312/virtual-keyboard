@@ -1,14 +1,13 @@
 const body = document.querySelector('body');
 const en = {
-  uc: ['~`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'del', 'capslock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', "'", 'enter', 'shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
-  lc: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del', 'capslock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
+  uc: ['~`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'capslock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', "'", 'enter', 'shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
+  lc: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'capslock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
 };
 const ru = {
-  uc: ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'del', 'capslock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'enter', 'shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '⯅', 'win', 'alt', '', 'ctrl', '⏴', '⏷', '⏵'],
-  lc: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'del', 'capslock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter', 'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '⯅', 'win', 'alt', '', 'ctrl', '⏴', '⏷', '⏵'],
+  uc: ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'capslock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'enter', 'shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '⯅', 'win', 'alt', '', 'ctrl', '⏴', '⏷', '⏵'],
+  lc: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'capslock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter', 'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '⯅', 'win', 'alt', '', 'ctrl', '⏴', '⏷', '⏵'],
 };
 let lang;
-
 // Create and add wrapper
 body.insertAdjacentHTML('afterbegin', '<div class="wrapper"></div>');
 const wrapper = document.querySelector('.wrapper');
@@ -67,7 +66,7 @@ for (let i = 0; i < 5; i += 1) {
 }
 
 // Create Btns
-const lengths = [14, 15, 13, 12, 7];
+const lengths = [14, 14, 13, 12, 7];
 
 function fillRow(row, length) {
   for (let i = 0; i < length; i += 1) {
@@ -241,6 +240,8 @@ function lightKeys(key) {
     }
   });
 }
+
+const spacebtn = document.querySelector('#space');
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Backspace') {
     lightKeys('backspace');
@@ -251,9 +252,12 @@ document.addEventListener('keydown', (e) => {
   } else if (e.key === 'CapsLock') {
     capslock.addEventListener('keydown', clock);
     lightKeys('capslock');
-  } else if (e.key === '') {
-    lightKeys('');
-    document.querySelector('#space').classList.toggle('active-btn');
+  } else if (e.code === 'Space') {
+    if (!spacebtn.classList.contains('active-btn')) {
+      spacebtn.classList.add('active-btn');
+    } else if (spacebtn.classList.contains('active-btn')) {
+      spacebtn.classList.remove('active-btn');
+    }
     space();
   } else if (e.key === 'Tab') {
     lightKeys('tab');
