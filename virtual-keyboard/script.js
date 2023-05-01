@@ -4,8 +4,8 @@ const en = {
   lc: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'capslock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'enter', 'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
 };
 const ru = {
-  uc: ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'capslock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'enter', 'shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '⯅', 'win', 'alt', '', 'ctrl', '⏴', '⏷', '⏵'],
-  lc: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'capslock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter', 'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '⯅', 'win', 'alt', '', 'ctrl', '⏴', '⏷', '⏵'],
+  uc: ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'backspace', 'tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'capslock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'enter', 'shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
+  lc: ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', 'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'capslock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter', 'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '⯅', 'win', '', 'alt', 'ctrl', '⏴', '⏷', '⏵'],
 };
 let lang;
 // Create and add wrapper
@@ -199,20 +199,20 @@ btns.forEach((btn) => {
 
 //  Case changing
 const capslock = document.querySelector('#capslock');
-function clock(e) {
+function clock() {
   let content;
-  if (!e.target.classList.contains('active')) {
+  if (!capslock.classList.contains('active')) {
     for (let i = 0; i < btns.length; i += 1) {
       if (!btns[i].classList.contains('control-btn')) {
         content = btns[i].textContent.toUpperCase();
-        e.target.classList.add('active');
+        capslock.classList.add('active');
         btns[i].textContent = content;
       }
     }
-  } else if (e.target.classList.contains('active')) {
+  } else if (capslock.classList.contains('active')) {
     for (let i = 0; i < btns.length; i += 1) {
       content = btns[i].textContent.toLowerCase();
-      e.target.classList.remove('active');
+      capslock.classList.remove('active');
       if (!btns[i].classList.contains('control-btn')) {
         btns[i].textContent = content;
       }
@@ -224,8 +224,8 @@ capslock.addEventListener('click', clock);
 // Get Symbols
 const shift = document.querySelector('#shift');
 function changeContent() {
-  shift.classList.toggle('active-btn');
-  if (shift.classList.contains('active-btn')) {
+  shift.classList.toggle('active');
+  if (shift.classList.contains('active')) {
     if (lang === 'en') {
       lang = en;
     } else if (lang === 'ru') {
@@ -256,47 +256,52 @@ function lightKeys(key) {
 
 const spacebtn = document.querySelector('#space');
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Backspace') {
-    lightKeys('backspace');
-    backspace();
-  } else if (e.key === 'Enter') {
-    lightKeys('enter');
-    enter();
-  } else if (e.key === 'CapsLock') {
-    capslock.addEventListener('keydown', clock);
-    lightKeys('capslock');
-  } else if (e.code === 'Space') {
-    if (!spacebtn.classList.contains('active-btn')) {
-      spacebtn.classList.add('active-btn');
-    } else if (spacebtn.classList.contains('active-btn')) {
-      spacebtn.classList.remove('active-btn');
+  const chars = [...(en.uc), ...(en.lc), ...(ru.uc), ...(ru.lc)];
+  const ctr = ['Backspace', 'Enter', 'CapsLock', 'Space', 'Tab', 'Shift', 'Control', 'Alt', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'OS'];
+  if (chars.includes(e.key) || ctr.includes(e.key) || ctr.includes(e.code)) {
+    if (e.key === 'Backspace') {
+      lightKeys('backspace');
+      backspace();
+    } else if (e.key === 'Enter') {
+      lightKeys('enter');
+      enter();
+    } else if (e.key === 'CapsLock') {
+      clock();
+      lightKeys('capslock');
+    } else if (e.code === 'Space') {
+      if (!spacebtn.classList.contains('active-btn')) {
+        spacebtn.classList.add('active-btn');
+      } else if (spacebtn.classList.contains('active-btn')) {
+        spacebtn.classList.remove('active-btn');
+      }
+      space();
+    } else if (e.key === 'Tab') {
+      lightKeys('tab');
+      tab();
+    } else if (e.key === 'Shift') {
+      changeContent();
+    } else if (e.key === 'Control') {
+      lightKeys('ctrl');
+    } else if (e.key === 'Alt') {
+      lightKeys('alt');
+    } else if (e.key === 'ArrowUp') {
+      lightKeys('⯅');
+      txtOutput.value += '⯅';
+    } else if (e.key === 'ArrowLeft') {
+      lightKeys('⏴');
+      txtOutput.value += '⏴';
+    } else if (e.key === 'ArrowDown') {
+      lightKeys('⏷');
+      txtOutput.value += '⏷';
+    } else if (e.key === 'ArrowRight') {
+      lightKeys('⏵');
+      txtOutput.value += '⏵';
+    } else if (e.key === 'OS') {
+      txtOutput.value += '';
+    } else {
+      lightKeys(e.key);
+      txtOutput.value += e.key;
     }
-    space();
-  } else if (e.key === 'Tab') {
-    lightKeys('tab');
-    tab();
-  } else if (e.key === 'shift') {
-    shift.addEventListener('keydown', clock);
-    lightKeys('shift');
-  } else if (e.key === 'Control') {
-    lightKeys('ctrl');
-  } else if (e.key === 'Alt') {
-    lightKeys('alt');
-  } else if (e.key === 'ArrowUp') {
-    lightKeys('⯅');
-    txtOutput.value += '⯅';
-  } else if (e.key === 'ArrowLeft') {
-    lightKeys('⏴');
-    txtOutput.value += '⏴';
-  } else if (e.key === 'ArrowDown') {
-    lightKeys('⏷');
-    txtOutput.value += '⏷';
-  } else if (e.key === 'ArrowRight') {
-    lightKeys('⏵');
-    txtOutput.value += '⏵';
-  } else {
-    lightKeys(e.key);
-    txtOutput.value += e.key;
   }
 });
 document.addEventListener('keyup', () => {
