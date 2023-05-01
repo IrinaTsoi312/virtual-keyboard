@@ -36,7 +36,7 @@ body {
   display: block;
   margin: 0 auto;
   padding: 1.5rem;
-  width: 850px;
+  width: 830px;
   background-color: rgba(255, 255, 255, 0.507);
   border-radius: 20px;
   z-index: 100;
@@ -82,11 +82,17 @@ body {
   background-color: #000000;
   border: 2px solid #000000;
   border-radius: 10px;
+  -webkit-box-shadow: 7px 7px 9px 0px #000000;
+  -moz-box-shadow: 7px 7px 9px 0px #000000;
+  box-shadow: 7px 7px 9px 0px #000000;
 }
 
 .key-btn:active {
   border: 2px solid rgb(255, 255, 0);
   color: rgb(255, 255, 0);
+  -webkit-box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
+  -moz-box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
+  box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
 }
 
 .key-btn__upper-symbol {
@@ -133,6 +139,9 @@ body {
   background-color: rgb(255, 255, 0);
   color: #000000;
   border: 2px solid rgb(255, 255, 0);
+  -webkit-box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
+  -moz-box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
+  box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
 }
 
 .active-btn {
@@ -147,8 +156,13 @@ body {
   }
 
   100% {
-    background-color: rgb(255, 255, 0);
+    background-color: #000000;
     color: #000000;
     border: 2px solid rgb(255, 255, 0);
+    border: 2px solid rgb(255, 255, 0);
+    color: rgb(255, 255, 0);
+    -webkit-box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
+    -moz-box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
+    box-shadow: 0px 0px 10px 0px rgb(255, 255, 0);
   }
 }
