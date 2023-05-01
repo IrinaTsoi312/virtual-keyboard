@@ -184,9 +184,16 @@ function del() {
   output.value = text.slice(0, start) + text.slice(start + 1);
 }
 
+// Audio onclick
+const audio = new Audio('./assets/click-button.mp3');
+function play() {
+  audio.play();
+}
+
 btns.forEach((btn) => {
   btn.addEventListener('click', () => {
     output.scrollTop = output.scrollHeight;
+    play();
     if (!btn.classList.contains('control-btn')) {
       output.value += btn.textContent;
     }
