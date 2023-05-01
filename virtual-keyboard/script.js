@@ -179,6 +179,7 @@ function tab() {
 
 btns.forEach((btn) => {
   btn.addEventListener('click', () => {
+    output.scrollTop = output.scrollHeight;
     if (!btn.classList.contains('control-btn')) {
       output.value += btn.textContent;
     }
@@ -256,6 +257,7 @@ function lightKeys(key) {
 
 const spacebtn = document.querySelector('#space');
 document.addEventListener('keydown', (e) => {
+  output.scrollTop = output.scrollHeight;
   const chars = [...(en.uc), ...(en.lc), ...(ru.uc), ...(ru.lc)];
   const ctr = ['Backspace', 'Enter', 'CapsLock', 'Space', 'Tab', 'Shift', 'Control', 'Alt', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'OS'];
   if (chars.includes(e.key) || ctr.includes(e.key) || ctr.includes(e.code)) {
